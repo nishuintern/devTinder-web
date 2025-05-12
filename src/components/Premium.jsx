@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { BASE_URL } from "../utils/constants";
+import PremiumCard from "./PremiumCard";
 
 const Premium = () => {
-  const [isUserPremium, setIsUserPremium] = React.useState(false);
+  const [isUserPremium, setIsUserPremium] =useState(false);
   useEffect(() => {
     verifyPremiumUser();
   }, []);
@@ -48,7 +49,7 @@ const Premium = () => {
     rzp.open();
   };
   return isUserPremium ? (
-    "You are already a premium member"
+    <PremiumCard />
   ) : (
     <div className="m-10">
       <div className="flex w-full">

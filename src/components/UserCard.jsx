@@ -1,10 +1,11 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
 const UserCard = ({ user }) => {
   const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
   const dispatch = useDispatch();
+  const users = useSelector((store) => store.user);
   const handleSendReq = async (status, userId) => {
     try {
       const res = await axios.post(
@@ -28,7 +29,20 @@ const UserCard = ({ user }) => {
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{firstName + " " + lastName}</h2>
+        <h2 className="card-title">
+          {firstName + " " + lastName}
+          {users.isPremium && (
+            <span
+              title="Verified User"
+              style={{
+                height: "20px",
+                width: "20px",
+              }}
+            >
+              ✅
+            </span>
+          )}
+        </h2>
         {age && gender && <p>{age + "," + gender}</p>}
         <p>{about}</p>
         <div className="card-actions justify-center my-4">

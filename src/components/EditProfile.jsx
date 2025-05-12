@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import PropTypes from 'prop-types';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
 import { addUser } from "../utils/userSlice";
 import UserCard from "./UserCard";

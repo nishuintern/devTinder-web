@@ -25,16 +25,42 @@ const NavBar = () => {
       </div>
       {user && (
         <div className="flex gap-1  items-center">
-          <div className="form-control">Welcome, {user.firstName}</div>
+          <div className="form-control flex items-center gap-1">
+            Welcome, {user.firstName}
+          </div>
 
           <div className="dropdown dropdown-end mx-5">
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className="btn btn-ghost btn-circle avatar relative"
             >
+              {user.isPremium && (
+                <span
+                  className="absolute"
+                  title="Verified User"
+                  style={{
+                    marginLeft: "20px",
+                    marginTop: "35px",
+                    height: "20px",
+                    width: "20px",
+                  }}
+                >
+                  {/* <img
+                    src="https://vectorified.com/images/verified-icon-copy-and-paste-1.png"
+                    alt="bluetick"
+                  /> */}
+                  ✅
+                </span>
+              )}
               <div className="w-10 rounded-full">
-                <img alt="Tailwind CSS Navbar component" src={user.photoUrl||"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"} />
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src={
+                    user.photoUrl ||
+                    "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
+                  }
+                />
               </div>
             </div>
             <ul
@@ -47,13 +73,13 @@ const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <Link to={'/connections'}>Connections</Link>
+                <Link to={"/connections"}>Connections</Link>
               </li>
               <li>
-                <Link to={'/requests'}>Requests</Link>
+                <Link to={"/requests"}>Requests</Link>
               </li>
               <li>
-                <Link to={'/premium'}>Premium</Link>
+                <Link to={"/premium"}>Premium</Link>
               </li>
               <li>
                 <a onClick={handleLogout}>Logout</a>
