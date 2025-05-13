@@ -17,19 +17,18 @@ const NavBar = () => {
     }
   };
   return (
-    <div className="navbar bg-base-300">
+    <div className="navbar bg-base-300 px-2 sm:px-4">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
+        <Link to="/" className="btn btn-ghost text-lg sm:text-xl px-2">
           devTinder
         </Link>
       </div>
       {user && (
-        <div className="flex gap-1  items-center">
-          <div className="form-control flex items-center gap-1">
+        <div className="flex gap-2 items-center">
+          <div className="form-control flex items-center gap-1 text-sm sm:text-base">
             Welcome, {user.firstName}
           </div>
-
-          <div className="dropdown dropdown-end mx-5">
+          <div className="dropdown dropdown-end mx-2 sm:mx-5">
             <div
               tabIndex={0}
               role="button"
@@ -37,23 +36,17 @@ const NavBar = () => {
             >
               {user.isPremium && (
                 <span
-                  className="absolute"
+                  className="absolute left-5 top-5 sm:left-5 sm:top-5 text-lg"
                   title="Verified User"
                   style={{
-                    marginLeft: "20px",
-                    marginTop: "35px",
                     height: "20px",
                     width: "20px",
                   }}
                 >
-                  {/* <img
-                    src="https://vectorified.com/images/verified-icon-copy-and-paste-1.png"
-                    alt="bluetick"
-                  /> */}
                   ✅
                 </span>
               )}
-              <div className="w-10 rounded-full">
+              <div className="w-10 h-10 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
                   src={
@@ -65,7 +58,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-40 sm:w-52 p-2 shadow"
             >
               <li>
                 <Link to="/profile" className="justify-between">

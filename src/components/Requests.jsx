@@ -34,72 +34,37 @@ const Requests = () => {
   if (requests.length === 0)
     return <h1 className="text-center mt-10 text-3xl">No requests Found</h1>;
   return (
-    // <div className="text-center my-10">
-    //   <h1 className="text-bold  text-2xl">requests</h1>
-
-    //   {requests.map((request) => {
-    //     const {_id, firstName, lastName, photoUrl, age, gender, about } =
-    //       request;
-
-    //     return (
-    //       <div
-    //         key={_id}
-    //         className="flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto"
-    //       >
-    //         <div>
-    //           <img
-    //             alt="photo"
-    //             className="w-20 h-20 rounded-full object-cover"
-    //             src={photoUrl}
-    //           />
-    //         </div>
-    //         <div className="text-left mx-4 ">
-    //           <h2 className="font-bold text-xl">
-    //             {firstName + " " + lastName}
-    //           </h2>
-    //           {age && gender && <p>{age + ", " + gender}</p>}
-    //           <p>{about}</p>
-    //         </div>
-    //         {/* <Link to={"/chat/" + _id}>
-    //         <button className="btn btn-primary">Chat</button>
-    //       </Link> */}
-    //       </div>
-    //     );
-    //   })}
-    // </div>
     <>
       <div className="mt-5">
-        <h1 className="text-bold text-2xl text-center">requests</h1>
+        <h1 className="font-bold text-2xl text-center">requests</h1>
       </div>
-      <div className="flex justify-center">
+      <div className="flex flex-col items-center px-2">
         {requests?.map((request) => {
           const { _id, photoUrl, firstName, lastName, age, gender, about } =
             request.fromUserId;
           return (
             <div
               key={_id}
-              className="mt-10 w-1/2 bg-base-300 card card-side shadow-sm"
+              className="mt-8 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg bg-base-300 card card-side shadow-sm flex flex-col sm:flex-row"
             >
-              <figure className="w-20 h-auto object-cover">
-                <img src={photoUrl} alt={firstName}/>
+              <figure className="flex justify-center items-center m-4 flex-shrink-0">
+                <img src={photoUrl} alt={firstName} className="w-20 h-20 rounded-full object-cover" />
               </figure>
-              <div className="card-body">
-                <h2 className="card-title text-bold text-2xl">
+              <div className="card-body p-4">
+                <h2 className="card-title font-bold text-lg sm:text-xl md:text-2xl">
                   {firstName + " " + lastName}
                 </h2>
-
-                {age && gender && <p>{age + " , " + gender}</p>}
-
-                <p>{about}</p>
-                <div className="card-actions flex justify-center">
+                {age && gender && <p className="text-sm sm:text-base">{age + " , " + gender}</p>}
+                <p className="text-xs sm:text-sm md:text-base">{about}</p>
+                <div className="card-actions flex flex-col sm:flex-row gap-2 justify-center mt-2">
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-primary w-full sm:w-auto"
                     onClick={() => reviewRequest("accepted", request._id)}
                   >
                     Accepted
                   </button>
                   <button
-                    className="btn btn-secondary"
+                    className="btn btn-secondary w-full sm:w-auto"
                     onClick={() => reviewRequest("rejected", request._id)}
                   >
                     Rejected

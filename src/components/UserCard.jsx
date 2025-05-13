@@ -17,7 +17,7 @@ const UserCard = ({ user }) => {
     } catch (error) {}
   };
   return (
-    <div className="card bg-base-300 w-96 shadow-sm">
+    <div className="card bg-base-300 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg shadow-sm mx-auto">
       <figure>
         <img
           src={
@@ -25,35 +25,25 @@ const UserCard = ({ user }) => {
             "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
           }
           alt="photo"
-          style={{ height: "auto", width: "100%" }}
+          className="object-cover w-full h-48 sm:h-56 md:h-64 rounded-t"
+          style={{ height: "auto" }}
         />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">
+      <div className="card-body p-4 sm:p-6">
+        <h2 className="card-title text-lg sm:text-xl md:text-2xl">
           {firstName + " " + lastName}
-          {users.isPremium && (
-            <span
-              title="Verified User"
-              style={{
-                height: "20px",
-                width: "20px",
-              }}
-            >
-              ✅
-            </span>
-          )}
         </h2>
-        {age && gender && <p>{age + "," + gender}</p>}
-        <p>{about}</p>
-        <div className="card-actions justify-center my-4">
+        {age && gender && <p className="text-sm sm:text-base">{age + ", " + gender}</p>}
+        <p className="text-xs sm:text-sm md:text-base">{about}</p>
+        <div className="card-actions flex flex-col sm:flex-row gap-2 justify-center my-4">
           <button
-            className="btn btn-primary"
+            className="btn btn-primary w-full sm:w-auto"
             onClick={() => handleSendReq("ignored", _id)}
           >
             Ignore
           </button>
           <button
-            className="btn btn-secondary"
+            className="btn btn-secondary w-full sm:w-auto"
             onClick={() => handleSendReq("interested", _id)}
           >
             Interested

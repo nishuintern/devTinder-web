@@ -51,35 +51,35 @@ const Premium = () => {
   return isUserPremium ? (
     <PremiumCard />
   ) : (
-    <div className="m-10">
-      <div className="flex w-full">
-        <div className="card bg-base-300 rounded-box grid h-80 grow place-items-center">
-          <h1 className="font-bold text-3xl">Silver Membership</h1>
-          <ul>
-            <li> - Chat with other people</li>
-            <li> - 100 Connection Requests per day</li>
-            <li> - Blue Tick</li>
-            <li> - 3 months </li>
+    <div className="m-4 sm:m-10">
+      <div className="flex flex-col lg:flex-row w-full gap-4">
+        <div className="card bg-base-300 rounded-box grid h-80 grow place-items-center p-4">
+          <h1 className="font-bold text-2xl sm:text-3xl text-center">Silver Membership</h1>
+          <ul className="text-sm sm:text-base mb-2">
+            <li>- Chat with other people</li>
+            <li>- 100 Connection Requests per day</li>
+            <li>- Blue Tick</li>
+            <li>- 3 months</li>
           </ul>
           <button
             onClick={() => handleBuyClick("silver")}
-            className="btn btn-secondary"
+            className="btn btn-secondary w-full sm:w-auto"
           >
             Buy Silver
           </button>
         </div>
-        <div className="divider divider-horizontal">OR</div>
-        <div className="card bg-base-300 rounded-box grid h-80 grow place-items-center">
-          <h1 className="font-bold text-3xl">Gold Membership</h1>
-          <ul>
-            <li> - Chat with other people</li>
-            <li> - Infinity Connection Requests per day</li>
-            <li> - Blue Tick</li>
-            <li> - 6 months </li>
+        <div className="divider lg:divider-horizontal my-4 lg:my-0">OR</div>
+        <div className="card bg-base-300 rounded-box grid h-80 grow place-items-center p-4">
+          <h1 className="font-bold text-2xl sm:text-3xl text-center">Gold Membership</h1>
+          <ul className="text-sm sm:text-base mb-2">
+            <li>- Chat with other people</li>
+            <li>- Infinity Connection Requests per day</li>
+            <li>- Blue Tick</li>
+            <li>- 6 months</li>
           </ul>
           <button
             onClick={() => handleBuyClick("gold")}
-            className="btn btn-primary"
+            className="btn btn-primary w-full sm:w-auto"
           >
             Buy Gold
           </button>

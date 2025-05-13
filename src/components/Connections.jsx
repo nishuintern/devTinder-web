@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
+  const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const fetchConnections = async () => {
     try {
@@ -25,70 +26,47 @@ const Connections = () => {
   if (connections.length === 0)
     return <h1 className="text-center mt-10 text-3xl">No Connections Found</h1>;
   return (
-    // <div className="text-center my-10">
-    //   <h1 className="text-bold  text-2xl">Connections</h1>
-
-    //   {connections.map((connection) => {
-    //     const {_id, firstName, lastName, photoUrl, age, gender, about } =
-    //       connection;
-
-    //     return (
-    //       <div
-    //         key={_id}
-    //         className="flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto"
-    //       >
-    //         <div>
-    //           <img
-    //             alt="photo"
-    //             className="w-20 h-20 rounded-full object-cover"
-    //             src={photoUrl}
-    //           />
-    //         </div>
-    //         <div className="text-left mx-4 ">
-    //           <h2 className="font-bold text-xl">
-    //             {firstName + " " + lastName}
-    //           </h2>
-    //           {age && gender && <p>{age + ", " + gender}</p>}
-    //           <p>{about}</p>
-    //         </div>
-    //         {/* <Link to={"/chat/" + _id}>
-    //         <button className="btn btn-primary">Chat</button>
-    //       </Link> */}
-    //       </div>
-    //     );
-    //   })}
-    // </div>
     <>
       <div className="mt-5">
-        <h1 className="text-bold text-2xl text-center">Connections</h1>
+        <h1 className="font-bold text-2xl text-center">Connections</h1>
       </div>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center px-2">
         {connections?.map((connection) => {
-          const { _id, photoUrl, firstName, lastName, age, gender, about } =
+          const { _id, photoUrl, firstName, lastName, age, gender, about, isPremium } =
             connection;
           return (
             <div
               key={_id}
-              className="mt-10 w-1/2 bg-base-300 card card-side shadow-sm"
+              className="mt-8 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg bg-base-300 card card-side shadow-sm flex flex-col sm:flex-row"
             >
-              <figure className="m-4">
+              <figure className="m-4 flex-shrink-0 flex justify-center">
                 <img
                   src={photoUrl}
                   alt={firstName}
                   className="w-20 h-20 rounded-full object-cover"
                 />
               </figure>
-              <div className="card-body">
-                <h2 className="card-title text-bold text-2xl">
+              <div className="card-body p-4">
+                <h2 className="card-title font-bold text-lg sm:text-xl md:text-2xl flex items-center gap-2">
                   {firstName + " " + lastName}
+                  {isPremium && (
+                    <span
+                      title="Verified User"
+                      className="inline-block"
+                      style={{
+                        height: "20px",
+                        width: "20px",
+                      }}
+                    >
+                      ✅
+                    </span>
+                  )}
                 </h2>
-
-                {age && gender && <p>{age + " , " + gender}</p>}
-
-                <p className="">{about}</p>
-                <div className="card-actions justify-end">
+                {age && gender && <p className="text-sm sm:text-base">{age + " , " + gender}</p>}
+                <p className="text-xs sm:text-sm md:text-base">{about}</p>
+                <div className="card-actions justify-end mt-2">
                   <Link to={"/chat/" + _id}>
-                    <button className="btn btn-primary">Chat</button>
+                    <button className="btn btn-primary w-full sm:w-auto">Chat</button>
                   </Link>
                 </div>
               </div>

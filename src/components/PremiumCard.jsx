@@ -4,19 +4,18 @@ import { useSelector } from "react-redux";
 const PremiumCard = () => {
   const user = useSelector((store) => store.user);
   return (
-    <div className="flex justify-center my-10">
-      <div className="card w-96 bg-base-300 shadow-sm">
+    <div className="flex justify-center my-6 px-2">
+      <div className="card w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg bg-base-300 shadow-sm">
         <div className="card-body">
-          <span className="badge badge-xs badge-warning">
+          <span className="badge badge-xs badge-warning mb-2">
             {user.membershipType}
           </span>
-          <div className="flex justify-between">
-            <h2 className="text-3xl font-bold">
+          <div className="flex justify-between items-center">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
               {user.firstName + " " + user.lastName}
             </h2>
-            {/* <span className="text-xl">$29/mo</span> */}
           </div>
-          <ul className="mt-6 flex flex-col gap-2 text-xs">
+          <ul className="mt-6 flex flex-col gap-2 text-xs sm:text-sm md:text-base">
             <li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +70,7 @@ const PremiumCard = () => {
           </ul>
           <div className="mt-6">
             {/* <button
-              className="btn btn-primary btn-block"
+              className="btn btn-primary w-full sm:w-auto"
               onClick={() => setIsPremium(false)}
             >
               Unsubscribe
