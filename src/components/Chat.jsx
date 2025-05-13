@@ -68,9 +68,9 @@ const Chat = () => {
   };
 
   return (
-    <div className="w-full max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-3xl mx-auto border border-gray-600 m-2 sm:m-5 h-[70vh] flex flex-col rounded">
-      <h1 className="p-4 sm:p-5 border-b border-gray-600 text-base sm:text-lg font-semibold">Chat</h1>
-      <div className="flex-1 overflow-y-auto p-3 sm:p-5 bg-base-200">
+    <div className="max-w-full justify-center md:mx-auto w-3/4 border border-gray-600 m-5 h-[70vh] flex flex-col ">
+      <h1 className="p-5 border-b border-gray-600">Chat</h1>
+      <div className="flex-1 overflow-scroll p-5">
         {messages.map((msg, index) => {
           return (
             <div
@@ -80,24 +80,23 @@ const Chat = () => {
                 (user.firstName === msg.firstName ? "chat-end" : "chat-start")
               }
             >
-              <div className="chat-header text-xs sm:text-sm">
+              <div className="chat-header">
                 {`${msg.firstName}  ${msg.lastName}`}
                 <time className="text-xs opacity-50"></time>
               </div>
-              <div className="chat-bubble text-sm sm:text-base">{msg.text}</div>
-              <div className="chat-footer opacity-50 text-xs">Seen</div>
+              <div className="chat-bubble">{msg.text}</div>
+              <div className="chat-footer opacity-50">Seen</div>
             </div>
           );
         })}
       </div>
-      <div className="p-3 sm:p-5 border-t border-gray-600 flex items-center gap-2 bg-base-100">
+      <div className="inline-flex p-5 border-t border-gray-600 md:flex items-center gap-2">
         <input
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
-          className="flex-1 border border-gray-500 text-white rounded p-2 text-sm sm:text-base bg-base-300"
-          placeholder="Type your message..."
-        />
-        <button onClick={sendMessage} className="btn btn-secondary w-20 sm:w-auto">
+          className="flex-1 border border-gray-500 text-white rounded p-2 w-full md:max-w-50"
+        ></input>
+        <button onClick={sendMessage} className="btn btn-secondary"> 
           Send
         </button>
       </div>

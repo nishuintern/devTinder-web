@@ -130,5 +130,15 @@ const EditProfile = ({user}) => {
     </>
   );
 };
+// EditProfile.propTypes = {
+//   user: PropTypes.shape({
+//     firstName: PropTypes.string.isRequired,
+//     lastName: PropTypes.string.isRequired,
+//     photoUrl: PropTypes.string,
+//     age: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+//     gender: PropTypes.string,
+//     about: PropTypes.string,
+//   }).isRequired,
+// };
 
 export default EditProfile;

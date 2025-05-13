@@ -16,42 +16,44 @@ const UserCard = ({ user }) => {
       dispatch(removeUserFromFeed(userId));
     } catch (error) {}
   };
-  return (
-    <div className="card bg-base-300 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg shadow-sm mx-auto">
-      <figure>
-        <img
-          src={
-            photoUrl ||
-            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
-          }
-          alt="photo"
-          className="object-cover w-full h-48 sm:h-56 md:h-64 rounded-t"
-          style={{ height: "auto" }}
-        />
-      </figure>
-      <div className="card-body p-4 sm:p-6">
-        <h2 className="card-title text-lg sm:text-xl md:text-2xl">
-          {firstName + " " + lastName}
-        </h2>
-        {age && gender && <p className="text-sm sm:text-base">{age + ", " + gender}</p>}
-        <p className="text-xs sm:text-sm md:text-base">{about}</p>
-        <div className="card-actions flex flex-col sm:flex-row gap-2 justify-center my-4">
-          <button
-            className="btn btn-primary w-full sm:w-auto"
-            onClick={() => handleSendReq("ignored", _id)}
-          >
-            Ignore
-          </button>
-          <button
-            className="btn btn-secondary w-full sm:w-auto"
-            onClick={() => handleSendReq("interested", _id)}
-          >
-            Interested
-          </button>
-        </div>
+  // ...existing code...
+return (
+  <div className="card bg-base-300 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg shadow-sm mx-auto">
+    <figure>
+      <img
+        src={
+          photoUrl ||
+          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
+        }
+        alt="photo"
+        className="object-cover w-full h-48 sm:h-56 md:h-64 rounded-t"
+        style={{ height: "auto" }}
+      />
+    </figure>
+    <div className="card-body p-4 sm:p-6">
+      <h2 className="card-title text-lg sm:text-xl md:text-2xl">
+        {firstName + " " + lastName}
+      </h2>
+      {age && gender && <p className="text-sm sm:text-base">{age + ", " + gender}</p>}
+      <p className="text-xs sm:text-sm md:text-base">{about}</p>
+      <div className="card-actions flex flex-col sm:flex-row gap-2 justify-center my-4">
+        <button
+          className="btn btn-primary w-full sm:w-auto"
+          onClick={() => handleSendReq("ignored", _id)}
+        >
+          Ignore
+        </button>
+        <button
+          className="btn btn-secondary w-full sm:w-auto"
+          onClick={() => handleSendReq("interested", _id)}
+        >
+          Interested
+        </button>
       </div>
     </div>
-  );
+  </div>
+);
+// ...existing code...
 };
 // UserCard.propTypes = {
 //   user: PropTypes.shape({
