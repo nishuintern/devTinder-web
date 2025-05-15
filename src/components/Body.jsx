@@ -6,6 +6,7 @@ import { addUser } from "../utils/userSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Footer from "./Footer";
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const Body = () => {
     <div>
       <NavBar />
       <Outlet />
+      <Footer/>
     </div>
   );
 };

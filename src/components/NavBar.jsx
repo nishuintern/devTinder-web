@@ -17,7 +17,7 @@ const NavBar = () => {
     }
   };
   return (
-    <div className="navbar bg-base-300 px-2 sm:px-4">
+    <div className="navbar bg-base-300 px-2 sm:px-4 sticky top-0 z-50 mb-4">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-lg sm:text-xl px-2">
           devTinder
@@ -36,7 +36,7 @@ const NavBar = () => {
             >
               {user.isPremium && (
                 <span
-                  className="absolute left-5 top-5 sm:left-5 sm:top-5 text-lg"
+                  className="absolute left-7 top-7 sm:left-8 sm:top-8 text-lg"
                   title="Verified User"
                   style={{
                     height: "20px",
@@ -58,7 +58,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-40 sm:w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[60] mt-3 w-40 sm:w-52 p-2 shadow fixed right-2 sm:right-5 top-16"
             >
               <li>
                 <Link to="/profile" className="justify-between">
