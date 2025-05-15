@@ -17,7 +17,7 @@ const NavBar = () => {
     }
   };
   return (
-    <div className="navbar bg-base-300 px-2 sm:px-4 sticky top-0 z-50 mb-4">
+    <div className="navbar bg-base-300 px-2 sm:px-4 sticky top-0 z-50 mb-6 sm:mb-6">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-lg sm:text-xl px-2">
           devTinder
