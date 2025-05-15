@@ -27,7 +27,7 @@ return (
         }
         alt="photo"
         className="object-cover w-full h-48 sm:h-56 md:h-64 rounded-t"
-        style={{ height: "auto" }}
+        style={{ height: "340px" }}
       />
     </figure>
     <div className="card-body p-4 sm:p-6">
