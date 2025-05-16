@@ -36,7 +36,7 @@ const NavBar = () => {
             >
               {user.isPremium && (
                 <span
-                  className="absolute left-7 top-7 sm:left-8 sm:top-8 text-lg"
+                  className="absolute top-5 right-0 translate-x-1/4 -translate-y-1/4 text-base sm:text-lg md:text-xl"
                   title="Verified User"
                   style={{
                     height: "20px",
@@ -58,7 +58,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[60] mt-3 w-40 sm:w-52 p-2 shadow fixed right-2 sm:right-5 top-16"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[60] mt-2 w-40 sm:w-52 p-2 shadow fixed"
             >
               <li>
                 <Link to="/profile" className="justify-between">
