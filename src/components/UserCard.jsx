@@ -1,69 +1,48 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
+
 const UserCard = ({ user }) => {
   const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
   const dispatch = useDispatch();
-  const users = useSelector((store) => store.user);
-  const handleSendReq = async (status, userId) => {
+
+  const handleSendRequest = async (status, userId) => {
     try {
       const res = await axios.post(
-        `${BASE_URL}/request/send/${status}/${userId}`,
+        BASE_URL + "/request/send/" + status + "/" + userId,
         {},
         { withCredentials: true }
       );
       dispatch(removeUserFromFeed(userId));
-    } catch (error) {}
+    } catch (err) {}
   };
-  // ...existing code...
-return (
-  <div className="card bg-base-300 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg shadow-sm mx-auto">
-    <figure>
-      <img
-        src={
-          photoUrl ||
-          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
-        }
-        alt="photo"
-        className="object-cover w-full h-48 sm:h-56 md:h-64 rounded-t"
-        style={{ height: "340px" }}
-      />
-    </figure>
-    <div className="card-body p-4 sm:p-6">
-      <h2 className="card-title text-lg sm:text-xl md:text-2xl">
-        {firstName + " " + lastName}
-      </h2>
-      {age && gender && <p className="text-sm sm:text-base">{age + ", " + gender}</p>}
-      <p className="text-xs sm:text-sm md:text-base">{about}</p>
-      <div className="card-actions flex flex-col sm:flex-row gap-2 justify-center my-4">
-        <button
-          className="btn btn-primary w-full sm:w-auto"
-          onClick={() => handleSendReq("ignored", _id)}
-        >
-          Ignore
-        </button>
-        <button
-          className="btn btn-secondary w-full sm:w-auto"
-          onClick={() => handleSendReq("interested", _id)}
-        >
-          Interested
-        </button>
+
+  return (
+    <div className="card bg-base-300 w-96 shadow-xl">
+      <figure>
+        <img src={user.photoUrl} alt="photo"  className="object-cover w-full"/>
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title">{firstName + " " + lastName}</h2>
+        {age && gender && <p>{age + ", " + gender}</p>}
+        <p>{about}</p>
+        <div className="card-actions justify-center my-4">
+          <button
+            className="btn btn-primary"
+            onClick={() => handleSendRequest("ignored", _id)}
+          >
+            Ignore
+          </button>
+          <button
+            className="btn btn-secondary"
+            onClick={() => handleSendRequest("interested", _id)}
+          >
+            Interested
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-);
-// ...existing code...
+  );
 };
-// UserCard.propTypes = {
-//   user: PropTypes.shape({
-//     firstName: PropTypes.string.isRequired,
-//     lastName: PropTypes.string.isRequired,
-//     photoUrl: PropTypes.string,
-//     age: PropTypes.number,
-//     gender: PropTypes.string,
-//     about: PropTypes.string,
-//   }).isRequired,
-// };
-
 export default UserCard;
