@@ -1,2 +1,2 @@
 export const BASE_URL =
-  location.hostname === "localhost" ? "http://localhost:7777" : "https://devtinder-aakh.onrender.com";
+  location.hostname === "localhost" ? "http://localhost:7777" : "https://devtinder-aakh.onrender.com/api";
