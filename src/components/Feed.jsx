@@ -14,17 +14,21 @@ const Feed = () => {
       const res = await axios.get(`${BASE_URL}/feed`, {
         withCredentials: true,
       });
-      dispatch(addFeed(res?.data?.users));
+      dispatch(addFeed(res?.data?.data));
     } catch (e) {
       console.error(e);
     }
   };
   useEffect(() => {
     getFeed();
-  },
-   []);
-  if(!feed) return;
-  if(feed.length<=0) return <h1 className="flex justify-center my-10  text-xl sm:text-2xl ">No More New User founds!</h1>
+  }, []);
+  if (!feed) return;
+  if (feed.length <= 0)
+    return (
+      <h1 className="flex justify-center my-10  text-xl sm:text-2xl ">
+        No More New User founds!
+      </h1>
+    );
   return (
     feed && (
       <div className="flex justify-center my-4 mb-6 px-2">
