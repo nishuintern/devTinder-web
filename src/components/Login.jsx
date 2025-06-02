@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${BASE_URL}/login`,
+        `https://devtinder-b1j9.onrender.com/login`,
         {
           emailId,
           password,
@@ -38,7 +38,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${BASE_URL}/signup`,
+        `https://devtinder-b1j9.onrender.com/signup`,
         {
           firstName,
           lastName,
