@@ -21,7 +21,7 @@ const UserCard = ({ user }) => {
   return (
     <div className="card bg-base-300 w-96 shadow-xl">
       <figure>
-        <img src={user.photoUrl} alt="photo"  className="object-cover w-full"/>
+        <img src={user.photoUrl} alt="photo" className="object-fit w-full" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{firstName + " " + lastName}</h2>
