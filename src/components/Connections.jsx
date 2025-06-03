@@ -26,7 +26,7 @@ const Connections = () => {
   if (connections.length === 0)
     return <h1 className="text-center mt-10 text-3xl">No Connections Found</h1>;
   return (
-    <div className="mb-[5%] ">
+    <div className="mb-[10%] sm:mb-[12%] lg:mb-[20%]">
       <div className="mt-5">
         <h1 className="font-bold text-2xl text-center">Connections</h1>
       </div>

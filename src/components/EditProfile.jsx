@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
 import { addUser } from "../utils/userSlice";
 import UserCard from "./UserCard";
 
-const EditProfile = ({user}) => {
+const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
@@ -16,32 +16,38 @@ const EditProfile = ({user}) => {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const [showToast, setShowToast] = useState(false);
-  const saveProfile=async ()=>{
-    setError("")
+  const saveProfile = async () => {
+    setError("");
     try {
-        const res=await axios.patch(`${BASE_URL}/profile/edit`,{
-            firstName,
-            lastName,
-            photoUrl,
-            age,
-            gender,
-            about
-        },{
-            withCredentials:true
-        })
-        dispatch(addUser(res?.data?.data))
-        setShowToast(true)
-        setTimeout(() => setShowToast(false), 3000);
+      const res = await axios.patch(
+        `${BASE_URL}/profile/edit`,
+        {
+          firstName,
+          lastName,
+          photoUrl,
+          age,
+          gender,
+          about,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      dispatch(addUser(res?.data?.data));
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
     } catch (error) {
-        setError(error?.response?.data);
+      setError(error?.response?.data);
     }
-  }
+  };
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-center items-center gap-6 my-6 px-2">
+      <div className="flex flex-col mb-[5%] md:flex-row justify-center  items-center gap-6 my-6 px-2">
         <div className="card bg-base-300 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg shadow-xl mx-auto">
           <div className="card-body">
-            <h2 className="card-title justify-center text-lg sm:text-xl md:text-2xl">Edit Profile</h2>
+            <h2 className="card-title justify-center text-lg sm:text-xl md:text-2xl">
+              Edit Profile
+            </h2>
             <div className="my-2">
               <label className="form-control w-full my-2">
                 <div className="label my-1.5">
@@ -112,12 +118,19 @@ const EditProfile = ({user}) => {
             </div>
             <p className="text-red-600 text-sm">{error}</p>
             <div className="card-actions justify-center my-2">
-              <button className="btn btn-primary w-full sm:w-auto" onClick={saveProfile}>Save Profile</button>
+              <button
+                className="btn btn-primary w-full sm:w-auto"
+                onClick={saveProfile}
+              >
+                Save Profile
+              </button>
             </div>
           </div>
         </div>
         <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
-          <UserCard user={{firstName,lastName,photoUrl,age,gender,about}}/>
+          <UserCard
+            user={{ firstName, lastName, photoUrl, age, gender, about }}
+          />
         </div>
       </div>
       {showToast && (
